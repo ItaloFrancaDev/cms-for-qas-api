@@ -12,9 +12,13 @@ API de gestão de conteúdo para equipes de qualidade com autenticação JWT e C
 ### Instalação
 ```bash
 git clone https://github.com/seu-usuario/cms-for-qas-api.git
+
 cd cms-for-qas-api
+
 npm install
+
 cp .env.example .env  # Configure suas variáveis
+
 npm run dev
 
 POST /auth/login
@@ -24,21 +28,27 @@ POST /auth/login
 }
 
 Header necessário para rotas protegidas:
+
 Authorization: Bearer <token-jwt>
+
 📡 Endpoints Principais
+
 👥 Usuários
 Método	Endpoint	Descrição
 POST	/usuarios	Cria novo usuário
 GET	/usuarios	Lista com filtros
 GET	/usuarios/:id	Busca por ID
+
 📂 Categorias
 Método	Endpoint	Descrição
 POST	/categorias	Cria nova categoria
 DELETE	/categorias/:id	Remove (sem artigos)
+
 📝 Artigos
 Método	Endpoint	Query Params
 GET	/artigos	page, limit
 POST	/artigos	Requer autorId
+
 🗃 Modelos de Dados
 typescript
 
