@@ -1,16 +1,15 @@
-import "reflect-metadata";
-import express from "express";
 import cors from "cors";
+import express, { Router } from "express";
+import path from "path";
+import "reflect-metadata";
 import swaggerUi from "swagger-ui-express";
 import YAML from "yamljs";
-import path from "path";
 import { AppDataSource } from "./database/data-source";
-import userRoutes from "./routes/userRoutes";
-import categoryRoutes from "./routes/categoryRoutes";
+import { authMiddleware } from "./middleware/authMiddleware";
 import articleRoutes from "./routes/articleRoutes";
 import authRoutes from "./routes/authRoutes";
-import { authMiddleware } from "./middleware/authMiddleware";
-import { Router } from "express";
+import categoryRoutes from "./routes/categoryRoutes";
+import userRoutes from "./routes/userRoutes";
 import { DatabaseCleanupService } from "./services/DatabaseCleanupService";
 
 const app = express();
@@ -37,7 +36,7 @@ userRouter.delete("/:id", userRoutes);
 app.use("/categorias", authMiddleware, categoryRoutes);
 app.use("/artigos", authMiddleware, articleRoutes);
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 4000;
 
 AppDataSource.initialize()
     .then(async () => {
